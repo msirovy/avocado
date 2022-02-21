@@ -28,11 +28,5 @@ jobs:
           version: latest
           args: release --rm-dist
           workdir: .
-          targets:
-          - linux_amd64
-          - linux_arm_7
-          - linux_arm_6
-          - linux_arm64
-          binary: avocado
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
