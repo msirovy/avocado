@@ -1,8 +1,8 @@
 project_name: avocado
 builds:
+- binary: avocado
   targets:
-  - linux_amd64
-  - linux_arm_7
-  - linux_arm_6
-  - linux_arm64
-  binary: avocado
+    - linux_amd64
+    - linux_arm_7
+    - linux_arm_6
+    - linux_arm64
