@@ -12,7 +12,7 @@ job "avocado" {
 
             config {
                 command = "/usr/local/bin/avocado"
-                args = [""]
+                args = ["-interval", "300"]
             }
 
             env {

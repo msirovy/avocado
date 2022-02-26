@@ -23,10 +23,12 @@ func getEnv(key string, defaultVal string) string {
 	return _ret
 }
 
+var interval int
+
 func main() {
 	pwr_pin := flag.Int("pwr-pin", 18, "Power PIN where DC will be enaboled")
 	measure_pin := flag.Int("pin", 4, "Input PIN ID")
-	// wait := flag.Int("wait", 5, "Timeout betwean measurement")
+	flag.IntVar(&interval, "interval", 30, "Timeout betwean measurement")
 	flag.Parse()
 
 	// Initialize GPIO
@@ -49,9 +51,9 @@ func main() {
 
 	// Measure every 30s
 	for {
-		time.Sleep(5 * time.Second) // Wait 10 sec
-		p_pwr.High()                // Enable measure detector
-		time.Sleep(1 * time.Second) // Wait 2 secs
+		time.Sleep(time.Duration(interval) * time.Second) // Wait 10 sec
+		p_pwr.High()                                      // Enable measure detector
+		time.Sleep(1 * time.Second)                       // Wait 2 secs
 
 		log.Println("AVOCADO: measure pin ", *measure_pin)
 		if p_read.Read() == 1 {
