@@ -11,7 +11,7 @@ job "avocado" {
             driver = "raw_exec"
 
             config {
-                command = "/usr/local/bin/avocado"
+                command = "avocado"
                 args = ["-interval", "300"]
             }
 
@@ -19,14 +19,16 @@ job "avocado" {
                 LOKI_URL = var.loki_url
             }
 
-            /*
+            
             artifact {
-                source = "https://internal.file.server/name-of-my-binary"
+                source = "https://github.com/msirovy/avocado/releases/download/0.1.2/avocado_0.1.2_linux_armv7.tar.gz"
+                /*
                 options {
                     checksum = "sha256:abd123445ds4555555555"
                 }
+                */
             }
-            */
+            
 
         }
     }
