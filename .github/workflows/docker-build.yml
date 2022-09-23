@@ -1,0 +1,26 @@
+name: docker-release
+
+on:
+  push:
+#    branches:
+#      - 'main'
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:      
+      -
+        # Setting up Docker Buildx with docker-container driver is required
+        # at the moment to be able to use a subdirectory with Git context
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      -
+        name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          push: true
+          tags: msirovy/avocado:nightly
+#          secrets: |
+#            GIT_AUTH_TOKEN=${{ secrets.REGISTRY_TOKEN }}
+
